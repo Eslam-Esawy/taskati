@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:taskati/core/app_colors.dart';
@@ -19,16 +18,6 @@ class UploadView extends StatefulWidget {
 var nameCon = TextEditingController();
 
 class _UploadViewState extends State<UploadView> {
-  @override
-  void initState() {
-    super.initState();
-    AppLocal.getCached(AppLocal.imageKey).then((value) {
-      setState(() {
-        imagePath = value;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,15 +58,13 @@ class _UploadViewState extends State<UploadView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (imagePath != null)
-
-                  //The image
-                  CircleAvatar(
-                    radius: 75,
-                    backgroundImage: (imagePath != null)
-                        ? FileImage(File(imagePath!)) as ImageProvider
-                        : const AssetImage('assets/user.png'),
-                  ),
+                //The image
+                CircleAvatar(
+                  radius: 75,
+                  backgroundImage: (imagePath != null)
+                      ? FileImage(File(imagePath!)) as ImageProvider
+                      : const AssetImage('assets/user.png'),
+                ),
                 const SizedBox(height: 20),
 
                 //The line under the screen

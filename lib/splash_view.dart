@@ -1,8 +1,8 @@
-import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
-import 'package:taskati/core/styles.dart';
-import 'package:taskati/feature/upload_view.dart';
+import 'package:lottie/lottie.dart';
 import 'package:taskati/core/app_local_storage.dart';
+import 'package:taskati/core/styles.dart';
+import 'package:taskati/feature/home/home_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
       Future.delayed(const Duration(seconds: 4), () {
         AppLocal.getBool(AppLocal.isUpload).then((value) {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => const UploadView(),
+            builder: (context) => const HomeView(),
           ));
         });
       });

@@ -4,11 +4,16 @@ import 'package:taskati/core/styles.dart';
 import 'package:taskati/core/app_colors.dart';
 import 'package:taskati/core/app_local_storage.dart';
 
-class HomeHeader extends StatelessWidget {
+class HomeHeader extends StatefulWidget {
   const HomeHeader({
     super.key,
   });
 
+  @override
+  State<HomeHeader> createState() => _HomeHeaderState();
+}
+
+class _HomeHeaderState extends State<HomeHeader> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,6 +22,7 @@ class HomeHeader extends StatelessWidget {
           future: AppLocal.getCached(AppLocal.nameKey),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              // print(snapshot.data);
               return Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
